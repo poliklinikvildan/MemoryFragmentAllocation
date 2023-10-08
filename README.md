@@ -1,3 +1,6 @@
+''cout << "Time: " << t << " - Allocation Succeeded for Fragment" << endl;   ''
+This line of code is responsible for printing a message indicating that memory allocation was successful at a certain time during the simulation. When this code is executed, it generates output like "Time: 1 - Allocation Succeeded for Fragment," with the value of t representing the actual simulation time. This output provides valuable information about the progress of memory allocation in the simulation over time.
+
 Output is a simulation of memory allocation using different strategies (Worst-Fit, Best-Fit, and First-Fit) over time. 
 
 Section Headers: These headers indicate which memory allocation strategy is currently being simulated.
