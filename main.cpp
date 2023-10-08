@@ -61,7 +61,7 @@ int main() {
         return (a.endBlock - a.startBlock) > (b.endBlock - b.startBlock);
     });
 
-    // Start a loop for memory allocation, reading job table and file fragments in order
+    // Start a loop for memory allocation, reading job table, and file fragments in order
     for (int t = 1; t < 16; t++) {
         // Check if the current time exists in the job table and perform the corresponding operation
         for (auto job : jobTable) {
@@ -94,12 +94,13 @@ int main() {
                     }
                 }
 
-                // Allocate the file fragment to memory or indicate allocation failure
+                // Allocate the file fragment to memory if a suitable block is found
                 if (worstFitBlock != -1 && largestFreeBlockSize >= requiredBlocks) {
                     for (int i = worstFitBlock; i < worstFitBlock + requiredBlocks; i++) {
                         memoryWorst[i] = fragment.startBlock;
                     }
                     fragment.startBlock += requiredBlocks * diskBlockSize;
+                    cout << "Time: " << t << " - Allocation Succeeded for Fragment" << endl;
                 } else {
                     cout << "Time: " << t << " - Allocation Failed for Fragment" << endl;
                 }
@@ -131,12 +132,13 @@ int main() {
                     }
                 }
 
-                // Allocate the file fragment to memory or indicate allocation failure
+                // Allocate the file fragment to memory if a suitable block is found
                 if (bestFitBlock != -1) {
                     for (int i = bestFitBlock; i < bestFitBlock + requiredBlocks; i++) {
                         memoryBest[i] = fragment.startBlock;
                     }
                     fragment.startBlock += requiredBlocks * diskBlockSize;
+                    cout << "Time: " << t << " - Allocation Succeeded for Fragment" << endl;
                 } else {
                     cout << "Time: " << t << " - Allocation Failed for Fragment" << endl;
                 }
@@ -167,12 +169,13 @@ int main() {
                     }
                 }
 
-                // Allocate the file fragment to memory or indicate allocation failure
+                // Allocate the file fragment to memory if a suitable block is found
                 if (firstFitBlock != -1) {
                     for (int i = firstFitBlock; i < firstFitBlock + requiredBlocks; i++) {
                         memoryFirst[i] = fragment.startBlock;
                     }
                     fragment.startBlock += requiredBlocks * diskBlockSize;
+                    cout << "Time: " << t << " - Allocation Succeeded for Fragment" << endl;
                 } else {
                     cout << "Time: " << t << " - Allocation Failed for Fragment" << endl;
                 }
